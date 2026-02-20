@@ -1,10 +1,25 @@
-# Ctrl + Shift + Enter
+# Clear workspace
 rm(list = ls())
-library(startupmsg)
-library("Rcmdr")
-library("TeachingDemos")
-library(sfsmisc)
-library(distr)
+
+# Install packages if not already installed
+required_packages <- c(
+  "startupmsg",
+  "TeachingDemos",
+  "sfsmisc",
+  "distr",
+  "abind",
+  "e1071"
+)
+
+for (pkg in required_packages) {
+  if (!require(pkg, character.only = TRUE)) {
+    print(pkg)
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  }
+}
+
+
 print("Ejercicio 1")
 print("a)")
 print("Es una variable aleatoria discreta binomial")
@@ -140,8 +155,7 @@ print(12)
 print(12, 13)
 print("m)")
 summary(BinomialSamples500)
-library(abind, pos = 19)
-library(e1071, pos = 20)
+
 #calcularResumenVariablesDiscretas(data=BinomialSamples500["obs"], statistics =c("mean", "sd", "quantiles"), quantiles = c(0.5), groups=NULL, tablaFrecuencia=TRUE, cortes=NULL)
 print("n)")
 BinomialSamples10000 <- as.data.frame(matrix(

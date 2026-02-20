@@ -1,6 +1,21 @@
-library(startupmsg, pos = 17)
-library(sfsmisc, pos = 17)
-library(distr, pos = 17)
+# Install packages if not already installed
+required_packages <- c(
+  "startupmsg",
+  "sfsmisc",
+  "distr",
+  "RcmdrPlugin.TeachStat",
+  "abind",
+  "e1071"
+)
+
+for (pkg in required_packages) {
+  if (!require(pkg, character.only = TRUE)) {
+    print(pkg)
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  }
+}
+
 G <- AbscontDistribution(
   d = function(y) {
     sapply(y, function(x) {
@@ -112,8 +127,7 @@ characRV(
 GenericSamples <- as.data.frame(matrix(r(G)(100 * 1), ncol = 1))
 rownames(GenericSamples) <- paste("sample", 1:100, sep = "")
 colnames(GenericSamples) <- "obs"
-library(abind, pos = 19)
-library(e1071, pos = 20)
+
 numSummary(
   GenericSamples[, "obs"],
   statistics = c("mean", "sd", "quantiles"),

@@ -1,4 +1,3 @@
-# Ctrl + Shift + Enter
 rm(list = ls())
 print("Ejercicios de vectores")
 "Ejercicio 1"

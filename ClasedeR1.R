@@ -1,4 +1,8 @@
-# Ctrl + Shift + Enter
+# Load packages
+if (!require(carData)) {
+  install.packages("carData")
+  library(carData)
+}
 
 x <- 1:10
 mean(x)
@@ -35,7 +39,6 @@ mifuncion <- function(x) {
 sapply(1:10, mifuncion)
 
 
-library(carData)
 data(AMSsurvey)
 
 write.table(

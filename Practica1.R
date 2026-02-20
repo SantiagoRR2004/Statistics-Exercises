@@ -1,4 +1,3 @@
-# Ctrl + Shift + Enter
 rm(list = ls())
 
 print("Lanzamiento de una moneda")

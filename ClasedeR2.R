@@ -1,4 +1,8 @@
-# Ctrl + Shift + Enter
+# Load packages
+if (!require(carData)) {
+  install.packages("carData")
+  library(carData)
+}
 
 x <- exp(100)
 x
@@ -59,7 +63,6 @@ outer(1:10, 1:10, "*")
 dd <- function(x, y) paste("a_", x, ",", y, sep = "")
 outer(1:10, 1:10, dd)
 
-library(carData)
 data(Arrests)
 str(Arrests)
 

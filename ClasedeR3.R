@@ -1,4 +1,3 @@
-# Ctrl + Shift + Enter
 rm(list = ls())
 
 library(datasets)

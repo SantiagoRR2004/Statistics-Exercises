@@ -1,10 +1,23 @@
-# Ctrl + Shift + Enter
+# Clear workspace
 rm(list = ls())
-library(startupmsg)
-library("Rcmdr")
-library("TeachingDemos")
-library(sfsmisc)
-library(distr)
+
+# Install packages if not already installed
+required_packages <- c(
+  "startupmsg",
+  "TeachingDemos",
+  "sfsmisc",
+  "distr"
+)
+
+for (pkg in required_packages) {
+  if (!require(pkg, character.only = TRUE)) {
+    print(pkg)
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  }
+}
+
+
 print("Ejercicio 5")
 print("a)")
 local({
